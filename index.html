@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Christ Yohann Badou - Entrepreneur Numérique</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <h1>Christ Yohann Badou</h1>
+        <p class="subtitle">Visionnaire | Entrepreneur | Innovateur Technologique </p>
+    </header>
+
+    <main>
+        <section class="arguments">
+            <div class="card">
+                <h2>Ma Passion : Le Numérique</h2>
+                <p>Véritable passionné des nouvelles technologies, je vois dans le numérique un levier de transformation sans limite. Mon parcours, marqué par l'obtention de mon BEPC en 2018 et de mon BAC en 2025, témoigne de ma persévérance à maîtriser les outils du futur.</p>
+            </div>
+
+            <div class="card">
+                <h2>Mon Objectif : Bâtir l'Avenir</h2>
+                <p>Mon ambition est claire : devenir le plus grand entrepreneur de ma génération. Plus qu'un succès personnel, je rêve de bâtir des solutions innovantes pour aider mon pays et propulser son développement vers de nouveaux sommets.</p>
+            </div>
+        </section>
+
+        <section class="certifications">
+            <h2>Pôle d'Expertise Google Cloud</h2>
+            <p class="intro-cert">Certifications officielles obtenues le 26 octobre 2025 :</p>
+            <div class="cert-grid">
+                <button onclick="ouvrirCert('Slides')">Google Slides</button>
+                <button onclick="ouvrirCert('Sheets')">Google Sheets</button>
+                <button onclick="ouvrirCert('Docs')">Google Docs</button>
+                <button onclick="ouvrirCert('Drive')">Google Drive</button>
+            </div>
+        </section>
+    </main>
+
+    <div id="modal" class="modal hidden">
+        <div class="modal-content">
+            <span class="close" onclick="fermerCert()">&times;</span>
+            <h3 id="modal-title"></h3>
+            <p><strong>Délivré par :</strong> Google Cloud via Coursera</p>
+            <p><strong>Date :</strong> 26 Octobre 2025</p>
+            <a id="modal-link" href="#" target="_blank" class="btn-verify">Consulter l'original</a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
