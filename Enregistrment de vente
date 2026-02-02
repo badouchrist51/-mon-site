@@ -1,0 +1,119 @@
+th=device-width, initial-scale=1.0">
+    <title>Enregistrement Ventes | Badr Criss</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root { --primary-color: #4e73df; --secondary-color: #1cc88a; }
+        body { background-color: #f8f9fc; font-family: 'Inter', sans-serif; color: #333; }
+        .hero-section { background: linear-gradient(135deg, #4e73df 0%, #224abe 100%); color: white; padding: 40px 0; border-radius: 0 0 25px 25px; mb-4; }
+        .card { border: none; border-radius: 15px; box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15); margin-bottom: 20px; }
+        .btn-success { background-color: var(--secondary-color); border: none; }
+        .about-section { border-left: 5px solid var(--primary-color); background: #ffffff; }
+        .badge-ai { background: #6f42c1; color: white; padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; }
+    </style>
+</head>
+<body>
+
+<div class="hero-section text-center">
+    <h1 class="display-5 fw-bold">🚀 Enregistrement des Ventes</h1>
+    <p class="lead">Gestionnaire professionnel en ligne</p>
+</div>
+
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-lg-4">
+            <div class="card about-section p-4">
+                <h4 class="text-primary mb-3">À propos du Développeur</h4>
+                <p><strong>Nom :</strong> Babou Christ Yohan</p>
+                <p><strong>Statut :</strong> Étudiant & Entrepreneur</p>
+                <p><strong>Expertise :</strong> Développeur Data/IA <span class="badge-ai">Intelligence Artificielle</span></p>
+                <hr>
+                <small class="text-muted">Passionné par l'automatisation des entreprises via les données.</small>
+            </div>
+        </div>
+
+        <div class="col-lg-8">
+            <div class="card p-4">
+                <h5 class="mb-4">Nouvelle Vente</h5>
+                <form id="salesForm" class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label">Produit</label>
+                        <input type="text" id="prod" class="form-control" placeholder="Ex: Basket Nike" required>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Prix (FCFA)</label>
+                        <input type="number" id="prix" class="form-control" required>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label">Quantité</label>
+                        <input type="number" id="qte" class="form-control" value="1" required>
+                    </div>
+                    <div class="col-12">
+                        <button type="submit" class="btn btn-primary w-100 fw-bold">Ajouter à la liste</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="card p-4">
+                <h5 class="mb-3 text-secondary">Tableau de bord des ventes</h5>
+                <div class="table-responsive">
+                    <table class="table align-middle">
+                        <thead class="table-light">
+                            <tr>
+                                <th>Produit</th>
+                                <th>Unité</th>
+                                <th>Qté</th>
+                                <th>Total</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="salesTable">
+                            </tbody>
+                    </table>
+                </div>
+                <div class="text-end mt-3 border-top pt-3">
+                    <span class="h4">Total Global : </span>
+                    <span id="grandTotal" class="h4 text-primary">0</span> <span class="h4 text-primary">FCFA</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Logique JavaScript
+    const form = document.getElementById('salesForm');
+    const table = document.getElementById('salesTable');
+    const totalDisplay = document.getElementById('grandTotal');
+    let totalGlobal = 0;
+
+    form.addEventListener('submit', (e) => {
+        e.preventDefault();
+        
+        const p = document.getElementById('prod').value;
+        const pr = parseFloat(document.getElementById('prix').value);
+        const q = parseInt(document.getElementById('qte').value);
+        const t = pr * q;
+
+        const row = table.insertRow();
+        row.innerHTML = `
+            <td>${p}</td>
+            <td>${pr.toLocaleString()}</td>
+            <td>${q}</td>
+            <td class="row-total" data-value="${t}">${t.toLocaleString()} FCFA</td>
+            <td><button class="btn btn-sm btn-outline-danger" onclick="this.parentElement.parentElement.remove(); updateTotal();">X</button></td>
+        `;
+
+        updateTotal();
+        form.reset();
+    });
+
+    function updateTotal() {
+        let sum = 0;
+        document.querySelectorAll('.row-total').forEach(td => {
+            sum += parseFloat(td.getAttribute('data-value'));
+        });
+        totalDisplay.innerText = sum.toLocaleString();
+    }
+</script>
+</body>
+</html>
